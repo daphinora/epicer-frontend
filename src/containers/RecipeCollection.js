@@ -36,7 +36,6 @@ class RecipeCollection extends Component {
     }
 
     fetchRecipeCollection = () => {
-        console.log(process.env.REACT_APP_API_KEY)
         fetch(collection, {
             "method": "GET",
             "headers": {
