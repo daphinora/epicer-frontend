@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
 import RecipeCard from './RecipeCard';
 
-const collection = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=5`
+const collection = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=25`
 class RecipeCollection extends Component {
     constructor() {
         super();
         this.state = {
             recipes: [],
         }
-    }
-
-    waitForIt = () => {
-        if (this.state.recipes.length > 0) {
-            this.renderRecipes()
-            console.log(this.state.recipes)
-        } else { setTimeout(this.waitForIt, 600) }
     }
 
     renderRecipes = () => {
