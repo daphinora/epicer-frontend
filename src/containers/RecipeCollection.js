@@ -25,7 +25,6 @@ class RecipeCollection extends Component {
 
     componentDidMount() {
         this.fetchRecipeCollection()
-        console.log(this.state.recipes)
     }
 
     fetchRecipeCollection = () => {
