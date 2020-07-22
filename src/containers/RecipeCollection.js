@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RecipeCard from './RecipeCard';
+import { Link } from 'react-router-dom';
 
 const collection = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=25`
 class RecipeCollection extends Component {
@@ -7,17 +8,75 @@ class RecipeCollection extends Component {
         super();
         this.state = {
             recipes: [],
+            favorites: [],
+            menu: {
+                monday: {
+                    breakfast: {},
+                    lunch: {},
+                    dinner: {},
+                    dessert: {},
+                    snack: {}
+                },
+                tuesday: {
+                    breakfast: {},
+                    lunch: {},
+                    dinner: {},
+                    dessert: {},
+                    snack: {}
+                },
+                wednesday: {
+                    breakfast: {},
+                    lunch: {},
+                    dinner: {},
+                    dessert: {},
+                    snack: {}
+                },
+                thursday: {
+                    breakfast: {},
+                    lunch: {},
+                    dinner: {},
+                    dessert: {},
+                    snack: {}
+                },
+                friday: {
+                    breakfast: {},
+                    lunch: {},
+                    dinner: {},
+                    dessert: {},
+                    snack: {}
+                },
+                saturday: {
+                    breakfast: {},
+                    lunch: {},
+                    dinner: {},
+                    dessert: {},
+                    snack: {}
+                },
+                sunday: {
+                    breakfast: {},
+                    lunch: {},
+                    dinner: {},
+                    dessert: {},
+                    snack: {}
+                }
+            }
         }
     }
 
+    addToMenu = (weekday, meal, recipe) => {
+        console.log(weekday, meal, recipe)
+    }
+
     renderRecipes = () => {
-        return this.state.recipes.map(r => <RecipeCard key={r.id} recipe={r} />)
+        return this.state.recipes.map(r => <RecipeCard key={r.id} recipe={r} handleAdd={this.addToMenu} />)
     }
 
     render() {
+        const { menu } = this.state
         return (
             <div>
                 <header>EPICER</header>
+                <Link to={{ pathname: '/menu', state: { menu } }} className="btn">Menu</Link>
                 {this.renderRecipes()}
             </div>
         );

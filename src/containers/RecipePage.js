@@ -11,7 +11,7 @@ const RecipePage = (props) => {
     }
 
     const showInstructions = () => {
-        return analyzedInstructions[0].steps.map(i => <Instruction key={i.id} step={i}/>)
+        return analyzedInstructions[0].steps.map(i => <Instruction key={i.number} step={i}/>)
     }
 
     return (
