@@ -25,6 +25,7 @@ class Dropdown extends Component {
             <div className="dropdown">
                 <button className="drpdwn-button" onClick={this.toggleShow}>+</button>
                 <div className="drpdwn-options">
+                    {/* Add weekly menu option (this week or next lolol) */}
                     <select className="drpdwn-weekday" onChange={this.handleChange} name="weekday">
                         <option disabled selected hidden>Select Day</option>
                         <option value="Monday">Monday</option>

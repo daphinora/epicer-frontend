@@ -65,6 +65,11 @@ class RecipeCollection extends Component {
 
     addToMenu = (weekday, meal, recipe) => {
         console.log(weekday, meal, recipe)
+        
+        // post fetch the recipe, each step of the recipe, each ingredient of the recipe,
+        // and make the joiner table for recipe:ingredient
+
+        // just post fetch the recipe id for now ??? :D
     }
 
     renderRecipes = () => {
