@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom';
 import Dropdown from './Dropdown';
 class RecipeCard extends Component {
     render() {
-        let { recipe } = this.props
+        let { image, title, id, readyInMinutes } = this.props.recipe
         return (
             <div className="recipe-card">
                 <br />
                 <br />
                 <div className="rcimg">
-                    <img src={recipe.image} alt={recipe.image} />
+                    <img src={image} alt={image} />
                 </div>
                 <div className="rcinfo">
-                    {recipe.title} <br />
-                    {recipe.readyInMinutes} Minutes <br />
-                    <Dropdown handleAdd={this.props.handleAdd} recipe={recipe} />
-                    <Link to={{ pathname: `/recipes/${recipe.id}`, state: { recipe: recipe } }}>Details</Link>
+                    {title} <br />
+                    {readyInMinutes} Minutes <br />
+                    <Dropdown handleAdd={this.props.handleAdd} recipe={this.props.recipe} />
+                    <Link to={{ pathname: `/recipes/${id}`, state: { recipe: id } }}>Details</Link>
                 </div>
             </div>
         );

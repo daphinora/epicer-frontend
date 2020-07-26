@@ -1,11 +1,11 @@
 import React from 'react';
 
 const Ingredient = ({ ingredient }) => {
-    const { original } = ingredient
+    // const { original } = ingredient
 
     return (
         <li className="ingredient">
-            {original}
+            {ingredient}
         </li>
     );
 }

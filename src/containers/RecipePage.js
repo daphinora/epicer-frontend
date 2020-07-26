@@ -1,36 +1,68 @@
-import React from 'react';
-import Ingredient from './Ingredient'
-import Instruction from './Instruction'
-import { Link } from 'react-router-dom'
-
-const RecipePage = (props) => {
-    const { title, image, readyInMinutes, extendedIngredients, analyzedInstructions } = props.location.state.recipe
-
-    const showIngredients = () => {
-        return extendedIngredients.map(i => <Ingredient key={i.id} ingredient={i} />)
+import React, { Component } from 'react';
+import Ingredient from './Ingredient';
+import Instruction from './Instruction';
+import { Link } from 'react-router-dom';
+import Dropdown from './Dropdown';
+class RecipePage extends Component {
+    constructor() {
+        super();
+        this.state = {
+            recipe: {}
+        }
     }
 
-    const showInstructions = () => {
-        return analyzedInstructions[0].steps.map(i => <Instruction key={i.number} step={i}/>)
+    showIngredients = () => {
+        return this.state.recipe.extendedIngredients && 
+        this.state.recipe.extendedIngredients.map(i => <Ingredient key={i.id} ingredient={i.original} />)
     }
 
-    return (
-        <div>
-            <h2>{title} | Ready In: {readyInMinutes} Minutes</h2>
-            <img src={image} alt={title}/>
+    showInstructions = () => {
+        return this.state.recipe.analyzedInstructions && 
+        this.state.recipe.analyzedInstructions[0].steps.map(i => <Instruction key={i.number} step={i} />)
+    }
+
+
+    render() {
+        const { title, image, readyInMinutes } = this.state.recipe
+
+        return (
             <div>
-                Ingredients: <br/>
-                <ul>
-                {showIngredients()}
-                </ul>
-            </div>
+                <h2>{title} | Ready In: {readyInMinutes} Minutes</h2>
+                <img src={image} alt={title} />
+                <div>
+                    Ingredients: <br />
+                    <ul>
+                        {this.showIngredients()}
+                    </ul>
+                </div>
                 Instructions:
-            <ol className="instructions">
-                {showInstructions()}
-            </ol>
-            <Link to={"/"}>Back</Link>
-        </div>
-    );
+                <ol className="instructions">
+                    {this.showInstructions()}
+                </ol>
+                <Dropdown />
+                <Link to={"/recipes"}>Back</Link>
+            </div>
+        );
+    }
+
+    componentDidMount() {
+        this.getRecipe();
+    }
+
+    getRecipe = () => {
+        fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${this.props.location.state.recipe}/information`, {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+                "x-rapidapi-key": process.env.REACT_APP_API_KEY
+            }
+        })
+            .then(r => r.json())
+            .then(response => this.setState({ recipe: response }))
+            .catch(err => {
+                console.log(err);
+            });
+    }
 }
 
 export default RecipePage;
