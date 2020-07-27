@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import RecipeCard from './RecipeCard';
 import { Link } from 'react-router-dom';
 
-const collection = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=25`
+const collection = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=5`
 class RecipeCollection extends Component {
     constructor() {
         super();
@@ -13,17 +13,8 @@ class RecipeCollection extends Component {
         }
     }
 
-    addToMenu = (weekday, meal, recipe) => {
-        console.log(weekday, meal, recipe)
-        
-        // post fetch the recipe, each step of the recipe, each ingredient of the recipe,
-        // and make the joiner table for recipe:ingredient
-
-        // just post fetch the recipe id for now ??? :D
-    }
-
     renderRecipes = () => {
-        return this.state.recipes.map(r => <RecipeCard key={r.id} recipe={r} handleAdd={this.addToMenu} menus={this.props.menus} />)
+        return this.state.recipes.map(r => <RecipeCard key={r.id} recipe={r} menus={this.props.menus} />)
     }
 
     render() {

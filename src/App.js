@@ -1,9 +1,9 @@
-import '../css/App.css';
+import './css/App.css';
 import React, { Component } from 'react';
 
 import RecipeCollection from './containers/RecipeCollection'
 import RecipePage from './containers/recipe page/RecipePage';
-import Menu from './containers/menu/Menu';
+import MenuPage from './containers/menu/MenuPage';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 class App extends Component {
@@ -32,8 +32,8 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/recipes" render={() => <RecipeCollection menus={this.state.menus} />} />
-            <Route path="/recipes/" component={RecipePage} />
-            <Route path="/menu" component={Menu} />
+            <Route path="/recipes/" render={(props) => <RecipePage {...props} menus={this.state.menus} />} />
+            <Route path="/menu" render={(props) => <MenuPage {...props} menus={this.state.menus} />} />
           </Switch>
         </Router>
         {/* Footer? */}

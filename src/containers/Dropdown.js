@@ -8,7 +8,8 @@ class Dropdown extends Component {
             weekday: "",
             meal: "",
             menu: "",
-            recipe: [],
+            recipe: {},
+            rec_id: "",
         }
     }
 
@@ -20,13 +21,39 @@ class Dropdown extends Component {
         console.log("This is where you toggle whether the dropdown is shown for this component :)")
     }
 
+    handleAdd = (menu, weekday, meal, recipe) => {
+        console.log(menu, weekday, meal, recipe)
+        this.postRecipe(menu, weekday, meal, recipe)
+    }
+
+    postRecipe = (menu, weekday, meal, recipe) => {
+        fetch(`http://localhost:3000/recipes`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                recipe: {
+                    ref_id: recipe.id,
+                    title: recipe.title,
+                    cook_time: recipe.readyInMinutes
+                },
+                menu_id: menu,
+                meal: meal,
+                weekday: weekday
+            })
+        })
+            .catch(err => { console.log(err) })
+    }
+
     render() {
-        const { weekday, meal, recipe } = this.state
+        const { menu, weekday, meal, recipe } = this.state
         return (
             <div className="dropdown">
                 <button className="drpdwn-button" onClick={this.toggleShow}>+</button>
                 <div className="drpdwn-options">
-                    <select className="drpdwn-menu" defaultValue={"default"} name="menu" onChange={this.handleChange}>
+                    <select className="drpdwn-menu" onChange={this.handleChange} defaultValue={"default"} name="menu" >
                         <option disabled value="default" hidden>Select Menu</option>
                         {this.props.menus.map(m => <option value={m.id}>{m.week}</option>)}
                     </select>
@@ -47,7 +74,7 @@ class Dropdown extends Component {
                         <option value="Dinner">Dinner</option>
                         <option value="Dessert">Dessert</option>
                     </select>
-                    <button onClick={() => this.props.handleAdd(weekday, meal, recipe)} >Submit</button>
+                    <button onClick={() => this.handleAdd(menu, weekday, meal, recipe)} >Submit</button>
                 </div>
             </div>
         );

@@ -14,7 +14,7 @@ class RecipeCard extends Component {
                 <div className="rcinfo">
                     {title} <br />
                     {readyInMinutes} Minutes <br />
-                    <Dropdown handleAdd={this.props.handleAdd} recipe={this.props.recipe} menus={this.props.menus} />
+                    <Dropdown recipe={this.props.recipe} menus={this.props.menus} />
                     <Link to={{ pathname: `/recipes/${id}`, state: { recipe: id } }}>Details</Link>
                 </div>
             </div>
