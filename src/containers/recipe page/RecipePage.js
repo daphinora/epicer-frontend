@@ -39,7 +39,7 @@ class RecipePage extends Component {
                 <ol className="instructions">
                     {this.showInstructions()}
                 </ol>
-                <Dropdown />
+                <Dropdown recipe={this.state.recipe} />
                 <Link to={"/recipes"}>Back</Link>
             </div>
         );

@@ -9,57 +9,7 @@ class RecipeCollection extends Component {
         this.state = {
             recipes: [],
             favorites: [],
-            menu: {
-                monday: {
-                    breakfast: {},
-                    lunch: {},
-                    dinner: {},
-                    dessert: {},
-                    snack: {}
-                },
-                tuesday: {
-                    breakfast: {},
-                    lunch: {},
-                    dinner: {},
-                    dessert: {},
-                    snack: {}
-                },
-                wednesday: {
-                    breakfast: {},
-                    lunch: {},
-                    dinner: {},
-                    dessert: {},
-                    snack: {}
-                },
-                thursday: {
-                    breakfast: {},
-                    lunch: {},
-                    dinner: {},
-                    dessert: {},
-                    snack: {}
-                },
-                friday: {
-                    breakfast: {},
-                    lunch: {},
-                    dinner: {},
-                    dessert: {},
-                    snack: {}
-                },
-                saturday: {
-                    breakfast: {},
-                    lunch: {},
-                    dinner: {},
-                    dessert: {},
-                    snack: {}
-                },
-                sunday: {
-                    breakfast: {},
-                    lunch: {},
-                    dinner: {},
-                    dessert: {},
-                    snack: {}
-                }
-            }
+            
         }
     }
 
@@ -73,7 +23,7 @@ class RecipeCollection extends Component {
     }
 
     renderRecipes = () => {
-        return this.state.recipes.map(r => <RecipeCard key={r.id} recipe={r} handleAdd={this.addToMenu} />)
+        return this.state.recipes.map(r => <RecipeCard key={r.id} recipe={r} handleAdd={this.addToMenu} menus={this.props.menus} />)
     }
 
     render() {

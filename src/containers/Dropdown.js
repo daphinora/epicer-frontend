@@ -17,7 +17,7 @@ class Dropdown extends Component {
     }
 
     toggleShow = () => {
-        console.log("This is where you use css to toggle whether the dropdown is shown for this component :)")
+        console.log("This is where you toggle whether the dropdown is shown for this component :)")
     }
 
     render() {
@@ -26,10 +26,9 @@ class Dropdown extends Component {
             <div className="dropdown">
                 <button className="drpdwn-button" onClick={this.toggleShow}>+</button>
                 <div className="drpdwn-options">
-                    <select className="drpdwn-menu" defaultValue={"default"}>
+                    <select className="drpdwn-menu" defaultValue={"default"} name="menu" onChange={this.handleChange}>
                         <option disabled value="default" hidden>Select Menu</option>
-                        <option value="" name="this week">Jul4 - Jul12</option>
-                        <option value="" name="next week">Next Week</option>
+                        {this.props.menus.map(m => <option value={m.id}>{m.week}</option>)}
                     </select>
                     <select className="drpdwn-weekday" onChange={this.handleChange} name="weekday" defaultValue={"default"} >
                         <option disabled value="default" hidden>Select Day</option>
