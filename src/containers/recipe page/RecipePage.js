@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Ingredient from './Ingredient';
 import Instruction from './Instruction';
 import { Link } from 'react-router-dom';
-import Dropdown from './Dropdown';
+import Dropdown from '../Dropdown';
 class RecipePage extends Component {
     constructor() {
         super();
