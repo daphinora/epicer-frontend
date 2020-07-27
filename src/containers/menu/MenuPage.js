@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
-import MenuDay from './MenuDay'
+import MenuTab from './MenuTab';
 
-class Menu extends Component {
+class MenuPage extends Component {
     constructor() {
         super();
         this.state = {
-            menu_id: "",
-            menu: []
+            currentMenu: {},
         }
     }
 
-    // renderMenu = () => {
-    //     return this.state.menu_id &&
-    //         this.getMenuRecipes() &&
-    //         this.state.menu.map(m => <MenuDay key={m.id} />)
-    // }
+    renderTabs = () => {
+        return this.props.menus.map(m => <MenuTab key={m.id} menu={m} handleClick={this.setCurrentMenu} />)
+    }
+
+    setCurrentMenu = (menu) => {
+        this.setState({currentMenu: menu})
+    }
 
     render() {
         return (
@@ -28,29 +29,10 @@ class Menu extends Component {
                 (checked!!! $ MenuRecipe.all.filter {|r| r.meal === "breakfast"}.first.recipe.title #=> "Recipe One")
                 and give the title of that recipe as well as make each of the recipes a link you can click on
                 that will redirect you to the recipepage corresponding to that recipe. yeah. you got this!!! */}
-                {/* {this.renderMenu()} */}
+                {this.renderTabs()}
             </div>
         );
     }
-
-    // componentDidMount() {
-    //     this.getMenuID();
-    // }
-
-    // getMenuID = () => {
-    //     fetch(`http://localhost:3000/user_menus?user=${this.state.user_id}`)
-    //         .then(r => r.json())
-    //         .then(r => this.setState({ menu_id: r.pop().menu_id }))
-    //         .catch(err => { console.log(err) })
-    // }
-
-    // getMenuRecipes = () => {
-    //     fetch(`http://localhost:3000/menu_recipes?menu=${this.state.menu_id}`)
-    //         .then(r => r.json())
-    //         .then(r => this.setState({ menu: r }))
-    //         .catch(err => { console.log(err) })
-    // }
-
 }
 
-export default Menu;
+export default MenuPage;
