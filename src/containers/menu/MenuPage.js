@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MenuTab from './MenuTab';
 import MenuCalendar from './MenuCalendar';
 
+// Big Ol' Great-Grandpa container! Immediate Children: MenuTab and MenuCalendar!
 class MenuPage extends Component {
     state = {
         currentMenu: this.props.menus[0]
@@ -12,15 +13,15 @@ class MenuPage extends Component {
     }
 
     setCurrentMenu = (menu) => {
-        this.setState({currentMenu: menu})
+        this.setState({ currentMenu: menu })
     }
 
     render() {
-        const {currentMenu} = this.state
+        const { currentMenu } = this.state
         return (
             <div className="menu">
-                <button className="new-menu btn">New Menu</button>
                 {this.renderTabs()}
+                <button className="new-menu btn">New Menu</button>
                 <MenuCalendar menu={currentMenu} />
             </div>
         );

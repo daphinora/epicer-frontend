@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../css/Dropdown.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Alert from 'react-bootstrap/Alert';
 
 class Dropdown extends Component {
     constructor() {
@@ -10,6 +12,7 @@ class Dropdown extends Component {
             menu: "",
             recipe: {},
             rec_id: "",
+            show: "hidden"
         }
     }
 
@@ -18,12 +21,21 @@ class Dropdown extends Component {
     }
 
     toggleShow = () => {
-        console.log("This is where you toggle whether the dropdown is shown for this component :)")
+        if (this.state.show === "hidden") {
+            this.setState({show: "visible" })
+        } else {this.setState({show: "hidden"})}
     }
 
     handleAdd = (menu, weekday, meal, recipe) => {
         console.log(menu, weekday, meal, recipe)
         this.postRecipe(menu, weekday, meal, recipe)
+    }
+
+    successAlert = () => {
+        console.log("alert successful!")
+        return <Alert varient='success'>
+            Recipe added!
+        </Alert>
     }
 
     postRecipe = (menu, weekday, meal, recipe) => {
@@ -44,18 +56,19 @@ class Dropdown extends Component {
                 weekday: weekday
             })
         })
-            .catch(err => { console.log(err) })
+            .catch(err => { console.log(err) });
+        this.successAlert();
     }
 
     render() {
-        const { menu, weekday, meal, recipe } = this.state
+        const { menu, weekday, meal, recipe, show } = this.state
         return (
             <div className="dropdown">
-                <button className="drpdwn-button" onClick={this.toggleShow}>+</button>
-                <div className="drpdwn-options">
+                <button className="drpdwn-button" onClick={this.toggleShow} style={{float: "left"}}>+</button>
+                <div className="drpdwn-options" style={{visibility: show}}>
                     <select className="drpdwn-menu" onChange={this.handleChange} defaultValue={"default"} name="menu" >
                         <option disabled value="default" hidden>Select Menu</option>
-                        {this.props.menus.map(m => <option value={m.id}>{m.week}</option>)}
+                        {this.props.menus.map(m => <option key={m.id} value={m.id}>{m.week}</option>)}
                     </select>
                     <select className="drpdwn-weekday" onChange={this.handleChange} name="weekday" defaultValue={"default"} >
                         <option disabled value="default" hidden>Select Day</option>

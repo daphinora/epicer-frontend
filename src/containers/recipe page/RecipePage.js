@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+
+// css
+import ListGroup from 'react-bootstrap/ListGroup'
+import '../css/RecipePage.css'
+
+// components
 import Ingredient from './Ingredient';
 import Instruction from './Instruction';
-import { Link } from 'react-router-dom';
 import Dropdown from '../Dropdown';
 class RecipePage extends Component {
     constructor() {
@@ -12,13 +17,21 @@ class RecipePage extends Component {
     }
 
     showIngredients = () => {
-        return this.state.recipe.extendedIngredients && 
-        this.state.recipe.extendedIngredients.map(i => <Ingredient key={i.id} ingredient={i.original} />)
+        return this.state.recipe.extendedIngredients &&
+            this.state.recipe.extendedIngredients.map(i => {
+                return <ListGroup.Item>
+                    <Ingredient key={i.id} ingredient={i.original} />
+                </ListGroup.Item>
+            })
     }
 
     showInstructions = () => {
-        return this.state.recipe.analyzedInstructions && 
-        this.state.recipe.analyzedInstructions[0].steps.map(i => <Instruction key={i.number} step={i} />)
+        return this.state.recipe.analyzedInstructions &&
+            this.state.recipe.analyzedInstructions[0].steps.map(i => {
+                return <ListGroup.Item>
+                    <Instruction key={i.number} step={i} />
+                </ListGroup.Item>
+            })
     }
 
 
@@ -26,21 +39,35 @@ class RecipePage extends Component {
         const { title, image, readyInMinutes } = this.state.recipe
 
         return (
-            <div>
-                <h2>{title} | Ready In: {readyInMinutes} Minutes</h2>
-                <img src={image} alt={title} />
-                <div>
-                    Ingredients: <br />
-                    <ul>
-                        {this.showIngredients()}
-                    </ul>
+            <div className="recipe-page">
+                <div className="header">
+                    {/* title */}
+                    <h2>
+                        {title} | Ready In: {readyInMinutes} Minutes
+                    </h2>
+
+                    {/* dropdown */}
+                    <Dropdown menus={this.props.menus} recipe={this.state.recipe} />
                 </div>
-                Instructions:
-                <ol className="instructions">
-                    {this.showInstructions()}
-                </ol>
-                <Dropdown menus={this.props.menus} recipe={this.state.recipe} />
-                <Link to={"/recipes"}>Back</Link>
+
+                {/* image */}
+                <img src={image} alt={title} />
+
+                {/* ingredients */}
+                <div className="ingredients">
+                    Ingredients: <br />
+                    <ListGroup style={{}}>
+                        {this.showIngredients()}
+                    </ListGroup>
+                </div>
+
+                {/* instructions */}
+                <div className="instructions">
+                    Instructions:
+                    <ListGroup variant="flush">
+                        {this.showInstructions()}
+                    </ListGroup>
+                </div>
             </div>
         );
     }

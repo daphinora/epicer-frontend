@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import RecipeCard from './RecipeCard';
-import { Link } from 'react-router-dom';
 
-const collection = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=5`
+const collection = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=25`
 class RecipeCollection extends Component {
     constructor() {
         super();
@@ -21,8 +20,6 @@ class RecipeCollection extends Component {
         const { menu } = this.state
         return (
             <div>
-                <header>EPICER</header>
-                <Link to={{ pathname: '/menu', state: { menu } }} className="btn">Menu</Link>
                 {this.renderRecipes()}
             </div>
         );

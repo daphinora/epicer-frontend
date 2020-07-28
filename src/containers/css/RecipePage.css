@@ -1,0 +1,10 @@
+.header {
+    /* float: left; */
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.recipe-page {
+    background-color: rgb(203, 251, 245);
+}

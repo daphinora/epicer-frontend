@@ -1,17 +1,25 @@
-import './css/App.css';
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+// css
+import './css/App.css';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Spinner from 'react-bootstrap/Spinner';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// components
 import RecipeCollection from './containers/RecipeCollection'
 import RecipePage from './containers/recipe page/RecipePage';
 import MenuPage from './containers/menu/MenuPage';
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      user_id: 1,
+      user_id: 7,
       menus: [],
+      status: true,
     }
   }
 
@@ -28,7 +36,17 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* NavBar */}
+        {/* NavBar! */}
+        <Navbar bg="dark" variant="dark">
+          <Navbar.Brand href="#home">EPICER</Navbar.Brand>
+          <Nav className="mr-auto">
+            <Nav.Link href="/recipes">Recipes</Nav.Link>
+            <Nav.Link href="/menu">My Menu</Nav.Link>
+            <Nav.Link href="#pricing">Pricing</Nav.Link>
+          </Nav>
+        </Navbar>
+        
+        {/* Routing! */}
         <Router>
           <Switch>
             <Route exact path="/recipes" render={() => <RecipeCollection menus={this.state.menus} />} />
