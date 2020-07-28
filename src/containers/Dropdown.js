@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import '../css/Dropdown.css';
+
+// css
+import './css/Dropdown.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Alert from 'react-bootstrap/Alert';
 
@@ -22,8 +24,8 @@ class Dropdown extends Component {
 
     toggleShow = () => {
         if (this.state.show === "hidden") {
-            this.setState({show: "visible" })
-        } else {this.setState({show: "hidden"})}
+            this.setState({ show: "visible" })
+        } else { this.setState({ show: "hidden" }) }
     }
 
     handleAdd = (menu, weekday, meal, recipe) => {
@@ -64,8 +66,8 @@ class Dropdown extends Component {
         const { menu, weekday, meal, recipe, show } = this.state
         return (
             <div className="dropdown">
-                <button className="drpdwn-button" onClick={this.toggleShow} style={{float: "left"}}>+</button>
-                <div className="drpdwn-options" style={{visibility: show}}>
+                <button className="drpdwn-button" onClick={this.toggleShow} style={{ float: "left" }}>+</button>
+                <div className="drpdwn-options" style={{ visibility: show }}>
                     <select className="drpdwn-menu" onChange={this.handleChange} defaultValue={"default"} name="menu" >
                         <option disabled value="default" hidden>Select Menu</option>
                         {this.props.menus.map(m => <option key={m.id} value={m.id}>{m.week}</option>)}

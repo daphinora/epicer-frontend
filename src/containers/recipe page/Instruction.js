@@ -1,10 +1,11 @@
 import React from 'react';
+import ListGroup from 'react-bootstrap/ListGroup'
 
 const Instruction = ({step}) => {
     return (
-        <li>
+        <ListGroup.Item as="li">
             {step.step}
-        </li>
+        </ListGroup.Item>
     );
 }
 

@@ -1,10 +1,11 @@
 import React from 'react';
+import ListGroup from 'react-bootstrap/ListGroup'
 
 const Ingredient = ({ ingredient }) => {
     return (
-        <div>
+        <ListGroup.Item>
             {ingredient}
-        </div>
+        </ListGroup.Item>
     );
 }
 

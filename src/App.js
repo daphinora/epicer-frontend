@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // css
-import './css/App.css';
+import './containers/css/App.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Spinner from 'react-bootstrap/Spinner';

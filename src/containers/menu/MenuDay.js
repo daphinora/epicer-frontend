@@ -11,7 +11,7 @@ const MenuDay = (props) => {
             return meals.map(meal =>
                 <div key={meal} className={meal}>
                     {meal}:
-                    <MenuMeal key={meal} recipes={props.recipes.filter(r => r.meal === meal)} />
+                    <MenuMeal key={meal} recipes={props.recipes.filter(r => r.meal === meal)} removeRecipe={props.removeRecipe}/>
                 </div>
             )
         }

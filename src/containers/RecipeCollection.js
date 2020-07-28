@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
+
+// components
 import RecipeCard from './RecipeCard';
 
+// css
+import './css/RecipeCollection.css'
+
+// for initial fetch
 const collection = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=25`
 class RecipeCollection extends Component {
-    constructor() {
-        super();
-        this.state = {
-            recipes: [],
-            favorites: [],
-            
-        }
+    state = {
+        recipes: [],
+        favorites: [],
     }
 
     renderRecipes = () => {
@@ -17,9 +19,8 @@ class RecipeCollection extends Component {
     }
 
     render() {
-        const { menu } = this.state
         return (
-            <div>
+            <div className="rcollection" >
                 {this.renderRecipes()}
             </div>
         );

@@ -21,10 +21,22 @@ class MenuCalendar extends Component {
             this.state.days.map(day =>
                 <div key={day} >
                     {day}
-                    <MenuDay key={day} recipes={this.state.menuRecipes.filter(mr => mr.weekday === day)} />
+                    <MenuDay key={day} recipes={this.state.menuRecipes.filter(mr => mr.weekday === day)} removeRecipe={this.removeRecipe} />
                     <br />
                 </div>
             )
+    }
+
+    removeRecipe = (mr) => {
+        fetch(`http://localhost:3000/menu_recipes/${mr.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+
+        this.setState({menuRecipes: this.state.menuRecipes.filter(m => m.id !== mr.id)})
     }
 
     render() {

@@ -18,20 +18,12 @@ class RecipePage extends Component {
 
     showIngredients = () => {
         return this.state.recipe.extendedIngredients &&
-            this.state.recipe.extendedIngredients.map(i => {
-                return <ListGroup.Item>
-                    <Ingredient key={i.id} ingredient={i.original} />
-                </ListGroup.Item>
-            })
+            this.state.recipe.extendedIngredients.map(i => <Ingredient key={i.id} ingredient={i.original} />)
     }
 
     showInstructions = () => {
         return this.state.recipe.analyzedInstructions &&
-            this.state.recipe.analyzedInstructions[0].steps.map(i => {
-                return <ListGroup.Item>
-                    <Instruction key={i.number} step={i} />
-                </ListGroup.Item>
-            })
+            this.state.recipe.analyzedInstructions[0].steps.map(i => <Instruction key={i.number} step={i} />)
     }
 
 
@@ -56,7 +48,7 @@ class RecipePage extends Component {
                 {/* ingredients */}
                 <div className="ingredients">
                     Ingredients: <br />
-                    <ListGroup style={{}}>
+                    <ListGroup>
                         {this.showIngredients()}
                     </ListGroup>
                 </div>
@@ -64,7 +56,7 @@ class RecipePage extends Component {
                 {/* instructions */}
                 <div className="instructions">
                     Instructions:
-                    <ListGroup variant="flush">
+                    <ListGroup as="ol">
                         {this.showInstructions()}
                     </ListGroup>
                 </div>
