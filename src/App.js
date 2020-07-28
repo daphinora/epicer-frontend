@@ -12,12 +12,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import RecipeCollection from './containers/RecipeCollection'
 import RecipePage from './containers/recipe page/RecipePage';
 import MenuPage from './containers/menu/MenuPage';
+import WelcomeBanner from './containers/WelcomeBanner';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      user_id: 7,
+      user_id: 1,
       menus: [],
       status: true,
     }
@@ -38,17 +39,19 @@ class App extends Component {
       <div>
         {/* NavBar! */}
         <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="#home">EPICER</Navbar.Brand>
+          <Navbar.Brand href="/">EPICER</Navbar.Brand>
           <Nav className="mr-auto">
             <Nav.Link href="/recipes">Recipes</Nav.Link>
             <Nav.Link href="/menu">My Menu</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link href="/">Logout</Nav.Link>
+            {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
           </Nav>
         </Navbar>
-        
+
         {/* Routing! */}
         <Router>
           <Switch>
+            <Route exact path="/" component={WelcomeBanner} />
             <Route exact path="/recipes" render={() => <RecipeCollection menus={this.state.menus} />} />
             <Route path="/recipes/" render={(props) => <RecipePage {...props} menus={this.state.menus} />} />
             <Route path="/menu" render={(props) => <MenuPage {...props} menus={this.state.menus} />} />
