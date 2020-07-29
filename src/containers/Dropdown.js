@@ -34,10 +34,9 @@ class Dropdown extends Component {
     }
 
     successAlert = () => {
-        return <Alert varient='success'>
+        return <Alert variant='success'>
             Recipe added!
         </Alert>
-        console.log("alert successful!")
     }
 
     postRecipe = (menu, weekday, meal, recipe) => {

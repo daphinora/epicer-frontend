@@ -35,6 +35,7 @@ class App extends Component {
   }
 
   render() {
+    const {menus, user_id} = this.state
     return (
       <div>
         {/* NavBar! */}
@@ -52,9 +53,9 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={WelcomeBanner} />
-            <Route exact path="/recipes" render={() => <RecipeCollection menus={this.state.menus} />} />
-            <Route path="/recipes/" render={(props) => <RecipePage {...props} menus={this.state.menus} />} />
-            <Route path="/menu" render={(props) => <MenuPage {...props} menus={this.state.menus} />} />
+            <Route exact path="/recipes" render={() => <RecipeCollection menus={menus} />} />
+            <Route path="/recipes/" render={(props) => <RecipePage {...props} menus={menus} />} />
+            <Route path="/menu" render={(props) => <MenuPage {...props} user={user_id} menus={menus} />} />
           </Switch>
         </Router>
         {/* Footer? */}
