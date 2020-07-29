@@ -59,7 +59,7 @@ class MenuPage extends Component {
 
 
     render() {
-        const { currentMenu, show } = this.state
+        const { show } = this.state
         return (
             <div className="menu">
                 {this.renderTabs()}

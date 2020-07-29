@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // css
-import './containers/css/App.css';
+import './css/App.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Spinner from 'react-bootstrap/Spinner';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // components
-import RecipeCollection from './containers/RecipeCollection'
-import RecipePage from './containers/recipe page/RecipePage';
-import MenuPage from './containers/menu/MenuPage';
-import WelcomeBanner from './containers/WelcomeBanner';
+import RecipeCollection from './recipe collection/RecipeCollection'
+import RecipePage from './recipe page/RecipePage';
+import MenuPage from './menu/MenuPage';
+import WelcomeBanner from './WelcomeBanner';
 
 class App extends Component {
   constructor() {
