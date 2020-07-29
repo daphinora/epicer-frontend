@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
+
+// components
 import RecipeCard from './RecipeCard';
 
+// css
+import './css/RecipeCollection.css'
+
+// for initial fetch
 const collection = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=25`
 class RecipeCollection extends Component {
-    constructor() {
-        super();
-        this.state = {
-            recipes: [],
-        }
+    state = {
+        recipes: [],
+        favorites: [],
     }
 
     renderRecipes = () => {
-        return this.state.recipes.map(r => <RecipeCard key={r.id} recipe={r} />)
+        return this.state.recipes.map(r => <RecipeCard key={r.id} recipe={r} menus={this.props.menus} />)
     }
 
     render() {
         return (
-            <div>
-                <header>EPICER</header>
+            <div className="rcollection" >
                 {this.renderRecipes()}
             </div>
         );
@@ -25,7 +28,6 @@ class RecipeCollection extends Component {
 
     componentDidMount() {
         this.fetchRecipeCollection()
-        console.log(this.state.recipes)
     }
 
     fetchRecipeCollection = () => {
