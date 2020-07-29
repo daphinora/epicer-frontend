@@ -47,6 +47,16 @@ class MenuPage extends Component {
         this.state.show === "hidden" ? this.setState({ show: "visible" }) : this.setState({ show: "hidden" })
     }
 
+    renderCalendar = () => {
+        if (this.props.menus.length > 0) {
+            return <MenuCalendar menu={this.state.currentMenu} />
+        } else {
+            return <div>
+                You haven't created a menu yet!
+            </div>
+        }
+    }
+
 
     render() {
         const { currentMenu, show } = this.state
@@ -59,7 +69,7 @@ class MenuPage extends Component {
                     <input type="week" id="week" name="week" />
                     <button>Create</button>
                 </form>
-                <MenuCalendar menu={currentMenu} />
+                {this.renderCalendar()}
             </div>
         );
     }

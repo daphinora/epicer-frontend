@@ -21,7 +21,7 @@ class MenuCalendar extends Component {
             this.state.days.map(day =>
                 <div key={day} >
                     {day}
-                    <MenuDay key={day} recipes={this.state.menuRecipes.filter(mr => mr.weekday === day)} removeRecipe={this.removeRecipe} />
+                    <MenuDay key={day} days={this.state.menuRecipes.filter(mr => mr.weekday === day)} removeRecipe={this.removeRecipe} />
                     <br />
                 </div>
             )

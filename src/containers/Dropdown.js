@@ -21,16 +21,15 @@ class Dropdown extends Component {
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value, recipe: this.props.recipe })
     }
+    
+    handleAdd = (menu, weekday, meal, recipe) => {
+        this.postRecipe(menu, weekday, meal, recipe)
+    }
 
     toggleShow = () => {
         if (this.state.show === "hidden") {
             this.setState({ show: "visible" })
         } else { this.setState({ show: "hidden" }) }
-    }
-
-    handleAdd = (menu, weekday, meal, recipe) => {
-        console.log(menu, weekday, meal, recipe)
-        this.postRecipe(menu, weekday, meal, recipe)
     }
 
     successAlert = () => {

@@ -7,11 +7,11 @@ const MenuDay = (props) => {
 
     const renderRecipes = () => {
         let meals = ["Breakfast", "Lunch", "Dinner", "Dessert"]
-        if (props.recipes.length > 0) {
+        if (props.days.length > 0) {
             return meals.map(meal =>
                 <div key={meal} className={meal}>
                     {meal}:
-                    <MenuMeal key={meal} recipes={props.recipes.filter(r => r.meal === meal)} removeRecipe={props.removeRecipe}/>
+                    <MenuMeal key={meal} recipes={props.days.filter(r => r.meal === meal)} removeRecipe={props.removeRecipe}/>
                 </div>
             )
         }
@@ -19,7 +19,7 @@ const MenuDay = (props) => {
 
     return (
         <div>
-            {props.recipes.length > 0 && renderRecipes()}
+            {props.days.length > 0 && renderRecipes()}
         </div>
     );
 }
