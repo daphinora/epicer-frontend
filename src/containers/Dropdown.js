@@ -6,24 +6,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Alert from 'react-bootstrap/Alert';
 
 class Dropdown extends Component {
-    constructor() {
-        super();
-        this.state = {
-            weekday: "",
-            meal: "",
-            menu: "",
-            recipe: {},
-            rec_id: "",
-            show: "hidden"
-        }
+    state = {
+        weekday: "",
+        meal: "",
+        menu: "",
+        recipe: {},
+        rec_id: "",
+        show: "hidden"
     }
 
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value, recipe: this.props.recipe })
-    }
-    
-    handleAdd = (menu, weekday, meal, recipe) => {
-        this.postRecipe(menu, weekday, meal, recipe)
     }
 
     toggleShow = () => {
@@ -38,7 +31,8 @@ class Dropdown extends Component {
         </Alert>
     }
 
-    postRecipe = (menu, weekday, meal, recipe) => {
+    handleAdd = (menu, weekday, meal, recipe) => {
+        this.successAlert();
         fetch(`http://localhost:3000/recipes`, {
             method: 'POST',
             headers: {
@@ -57,14 +51,13 @@ class Dropdown extends Component {
             })
         })
             .catch(err => { console.log(err) });
-        this.successAlert();
     }
 
     render() {
         const { menu, weekday, meal, recipe, show } = this.state
         return (
             <div className="dropdown">
-                <button className="drpdwn-button" onClick={this.toggleShow} style={{ float: "left" }}>+</button>
+                <button className="drpdwn-button" onClick={this.toggleShow} style={{ float: "left" }}>Add to menu</button>
                 <div className="drpdwn-options" style={{ visibility: show }}>
                     <select className="drpdwn-menu" onChange={this.handleChange} defaultValue={"default"} name="menu" >
                         <option disabled value="default" hidden>Select Menu</option>
@@ -87,11 +80,12 @@ class Dropdown extends Component {
                         <option value="Dinner">Dinner</option>
                         <option value="Dessert">Dessert</option>
                     </select>
-                    <button onClick={() => this.handleAdd(menu, weekday, meal, recipe)} >Submit</button>
+                    <button onClick={() => this.handleAdd(menu, weekday, meal, recipe)} className="drpdwn-submit" >Submit</button>
                 </div>
             </div>
         );
     }
 }
+
 export default Dropdown;
 

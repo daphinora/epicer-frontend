@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+import { useHistory } from 'react-router-dom'
 
 function SignUpForm(props) {
     const [username, setUsername] = useState("")
@@ -13,8 +16,7 @@ function SignUpForm(props) {
     }
 
     const handleSubmit = (evt) => {
-        evt.preventDefault()
-        console.log(username, "=====", password)
+        evt.preventDefault();
         fetch(`http://localhost:3000/users`, {
             method: "POST",
             headers: {
@@ -30,33 +32,39 @@ function SignUpForm(props) {
             .then(data => {
                 localStorage.setItem("token", data.jwt)
                 props.handleLogin(data.user)
+                props.history.push("/menu")
             })
         setUsername("")
         setPassword("")
-    }
-    
-    const formDivStyle = {
-        margin: "auto",
-        padding: "20px",
-        width: "80%"
+        props.history.push("/menu")
     }
 
     return (
-        <div style={formDivStyle}>
-            <h1>Sign Up</h1>
-            <form className="ui form" onSubmit={handleSubmit}>
-                <div className="field">
-                    <label>Username</label>
-                    <input value={username} onChange={handleUsernameChange} type="text" placeholder="username" />
+        <Card bg="light" border="light" style={{ padding: '4vh' }}>
+            <Card.Body>
+                <Card.Title className="Sign-Up-Title" style={{ fontSize: "25px" }}>Sign Up</Card.Title>
+                <Card.Text className="Sign-Up-Title">
+                    <div>
+                        <form onSubmit={(e) => handleSubmit(e)} style={{ paddingBottom: "10px" }}>
+                            <label>Username:</label>
+                            <input value={username} onChange={handleUsernameChange} type="text" placeholder="username" />
+                            <br />
+                            <label style={{ paddingRight: "10px" }}>Password:</label>
+                            <input value={password} onChange={handlePasswordChange} type="password" placeholder="password" />
+                            <br />
+                            <br />
+                            <Button type="submit" className="Submit-Button">Submit</Button>
+                        </form>
+                    </div>
+                </Card.Text>
+                {/* <br /> */}
+                <br />
+                <div style={{ textAlign: "center" }}>
+                    Already have an account?
+                    <Button variant="outline-primary" className="Other-Button" onClick={() => props.handleFormSwitch("login")}>Log In</Button>
                 </div>
-                <div className="field">
-                    <label>Password</label>
-                    <input value={password} onChange={handlePasswordChange} type="password" placeholder="password" />
-                </div>
-
-                <button className="ui button" type="submit">Submit</button>
-            </form>
-        </div>
+            </Card.Body>
+        </Card>
     )
 }
 

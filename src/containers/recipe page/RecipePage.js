@@ -32,34 +32,46 @@ class RecipePage extends Component {
 
         return (
             <div className="recipe-page">
-                <div className="header">
-                    {/* title */}
-                    <h2>
+                <div className="header-and-image">
+                    <div className="header">
+                        {/* title */}
+                        {/* <h2> */}
                         {title} | Ready In: {readyInMinutes} Minutes
-                    </h2>
+                        {/* </h2> */}
+                    </div>
 
                     {/* dropdown */}
-                    <Dropdown menus={this.props.menus} recipe={this.state.recipe} />
+                    <div className="rec-drp">
+                        <Dropdown menus={this.props.menus} recipe={this.state.recipe} />
+                    </div>
+
+                    {/* image */}
+                    <img src={image} alt={title} className="rec-image" />
                 </div>
 
-                {/* image */}
-                <img src={image} alt={title} />
+                <div className="ing-inst">
+                    {/* ingredients */}
+                    <div className="ingredients">
+                        <ListGroup as="ul">
+                            <ListGroup.Item style={{ backgroundColor: "lightgrey" }}>
+                                Ingredients:
+                            </ListGroup.Item>
+                            {this.showIngredients()}
+                        </ListGroup>
+                    </div>
 
-                {/* ingredients */}
-                <div className="ingredients">
-                    Ingredients: <br />
-                    <ListGroup>
-                        {this.showIngredients()}
-                    </ListGroup>
+                    {/* instructions */}
+                    <div className="instructions">
+                        <ListGroup as="ol">
+                            <ListGroup.Item style={{ backgroundColor: "lightgrey" }}>
+                                Instructions:
+                            </ListGroup.Item>
+                            {this.showInstructions()}
+                        </ListGroup>
+                    </div>
                 </div>
-
-                {/* instructions */}
-                <div className="instructions">
-                    Instructions:
-                    <ListGroup as="ol">
-                        {this.showInstructions()}
-                    </ListGroup>
-                </div>
+                <br />
+                <br />
             </div>
         );
     }

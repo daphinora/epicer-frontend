@@ -1,0 +1,60 @@
+.Delete-Btn {
+    background-color: rgb(245, 245, 245);
+    border-color: rgb(100, 100, 100);
+    color: #a32515;
+    font-size: 14px;
+    border-width: 1px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: -20%;
+    size: 10%;
+    width: 100%;
+    padding: 2px;
+    /* float: right; */
+}
+
+.Delete-Btn:hover {
+    background-color: rgb(223, 223, 223);
+    border-color: rgb(63, 63, 63);
+    color: #7a1d10;
+}
+
+.new-btn {
+    margin: 2px;
+    font-size: 25px;
+    justify-self: center;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    margin-bottom: 150%;
+    background-color: dodgerblue;
+}
+
+.new-form {
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);   
+}
+
+.Menu-Calendar {
+    min-width: 100%;
+    color: white;
+}
+
+.MenuPage {
+    background-image: url(../assets/cutting\ board.jpeg);
+    background-size: cover;
+    size: 200%
+}
+
+.column {
+    margin: 2px;
+    padding: 7px;
+}
+
+.weekday {
+    font-size: 20px;
+    background-color: dodgerblue;
+}

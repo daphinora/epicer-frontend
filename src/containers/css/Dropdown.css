@@ -1,4 +1,21 @@
 .dropdown {
     margin: 5px 15px;
-    width: 50%
+    width: 50%;
+}
+
+.drpdwn-button {
+    background-color: rgb(224, 241, 255);
+    padding: 5px;
+}
+
+.drpdwn-button:hover {
+    background-color: rgb(204, 219, 231);
+}
+
+.drpdwn-submit {
+    background-color: rgb(224, 241, 255);
+}
+
+.drpdwn-submit:hover {
+    background-color: rgb(204, 219, 231);
 }
