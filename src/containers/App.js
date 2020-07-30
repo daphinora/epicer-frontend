@@ -48,7 +48,6 @@ class App extends Component {
               <Nav.Link href="/menu">My Menu</Nav.Link>
               <Nav.Link href="/recipes">Browse Recipes</Nav.Link>
               <Nav.Link href="/">Logout</Nav.Link>
-              {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
             </Nav>
           </Navbar>
         </div>
@@ -57,13 +56,11 @@ class App extends Component {
         <Router history={history}>
           <Switch>
             <Route exact path='/'> <Home history={history} /> </Route>
-            {/* <Route exact path="/" render={(props) => <WelcomeBanner {...props} history={history} />} /> */}
             <Route exact path="/recipes" render={() => <RecipeCollection menus={menus} />} />
             <Route path="/recipes/" render={(props) => <RecipePage {...props} menus={menus} />} />
             <Route path="/menu" render={(props) => <MenuPage {...props} user={user_id} menus={menus} />} />
           </Switch>
         </Router>
-        {/* Footer? */}
       </div>
     );
   }

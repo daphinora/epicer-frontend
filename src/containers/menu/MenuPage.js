@@ -32,6 +32,7 @@ class MenuPage extends Component {
 
     handleChange = (event) => {
         let date = event.target.valueAsDate.toString();
+        console.log(date)
         let day = date[8] + date[9];
         let newDate = date.replace("GMT-0500 (Central Daylight Time)", "").replace("Sun ", "")
             .replace(" 19:00:00", "")
@@ -47,7 +48,6 @@ class MenuPage extends Component {
                     <div style={{ marginLeft: "600px", fontSize: "80px", maxHeight: "50%", fontFamily: "Penna", marginTop: "-1%" }}>
                         Weekly Menus
                     </div>
-                    {/* <br /> */}
                     <form style={{ fontSize: "17px", }} className="new-form" onChange={this.handleChange} onSubmit={() => this.createNewMenu()} >
                         <label>Creating a new menu? Select a week:</label>
                         <input type="week" id="week" name="week" />

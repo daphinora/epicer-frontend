@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
 // css
-import ListGroup from 'react-bootstrap/ListGroup'
-import '../css/RecipePage.css'
+import ListGroup from 'react-bootstrap/ListGroup';
+import '../css/RecipePage.css';
+import CardColumns from 'react-bootstrap/CardColumns';
+import Card from 'react-bootstrap/Card';
 
 // components
-import Ingredient from './Ingredient';
 import Instruction from './Instruction';
 import Dropdown from '../Dropdown';
 class RecipePage extends Component {
@@ -18,7 +19,7 @@ class RecipePage extends Component {
 
     showIngredients = () => {
         return this.state.recipe.extendedIngredients &&
-            this.state.recipe.extendedIngredients.map(i => <Ingredient key={i.id} ingredient={i.original} />)
+            this.state.recipe.extendedIngredients.map(i => <ListGroup.Item>{i.original}</ListGroup.Item>)
     }
 
     showInstructions = () => {
@@ -35,9 +36,7 @@ class RecipePage extends Component {
                 <div className="header-and-image">
                     <div className="header">
                         {/* title */}
-                        {/* <h2> */}
                         {title} | Ready In: {readyInMinutes} Minutes
-                        {/* </h2> */}
                     </div>
 
                     {/* dropdown */}
@@ -45,34 +44,48 @@ class RecipePage extends Component {
                         <Dropdown menus={this.props.menus} recipe={this.state.recipe} />
                     </div>
 
-                    {/* image */}
-                    <img src={image} alt={title} className="rec-image" />
-                </div>
+                    <CardColumns className="columns">
+                        <Card className="hiddenasf">
+                            <Card.Body>
+                                this isn't a real card :)
+                            </Card.Body>
+                        </Card>
 
-                <div className="ing-inst">
-                    {/* ingredients */}
-                    <div className="ingredients">
-                        <ListGroup as="ul">
-                            <ListGroup.Item style={{ backgroundColor: "lightgrey" }}>
-                                Ingredients:
-                            </ListGroup.Item>
-                            {this.showIngredients()}
-                        </ListGroup>
-                    </div>
+                        {/* image */}
+                        <Card className="rec-image">
+                            <Card.Img src={image} className="rec-image" />
+                        </Card>
 
-                    {/* instructions */}
-                    <div className="instructions">
-                        <ListGroup as="ol">
-                            <ListGroup.Item style={{ backgroundColor: "lightgrey" }}>
-                                Instructions:
-                            </ListGroup.Item>
-                            {this.showInstructions()}
-                        </ListGroup>
-                    </div>
+                        {/* ingredients */}
+                        <Card className="card">
+                            <Card.Body>
+                                <Card.Title style={{ color: "black", textAlign: "center" }}>
+                                    Ingredients:
+                                </Card.Title>
+                                <Card.Text>
+                                    <ListGroup variant="flush" style={{ color: 'rgb(71, 71, 71)' }}>
+                                        {this.showIngredients()}
+                                    </ListGroup>
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+
+                        {/* instructions */}
+                        <Card className="card">
+                            <Card.Body>
+                                <Card.Title style={{ color: "black", textAlign: "center" }}>
+                                    Instructions:
+                                </Card.Title>
+                                <Card.Text>
+                                    <ListGroup variant="flush" style={{ color: 'rgb(71, 71, 71)' }}>
+                                        {this.showInstructions()}
+                                    </ListGroup>
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </CardColumns>
                 </div>
-                <br />
-                <br />
-            </div>
+            </div >
         );
     }
 

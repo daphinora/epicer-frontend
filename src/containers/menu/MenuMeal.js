@@ -22,7 +22,7 @@ const MenuMeal = (props) => {
                     </div>
                 </ListGroup.Item>
             )
-        } else { return <Link to="/recipes" style={{ color: "grey" }}>Find recipes!</Link> }
+        } else { return <Link to="/recipes" key={props.meal} style={{ color: "grey" }}>Find recipes!</Link> }
     }
 
     return (
