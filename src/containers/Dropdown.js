@@ -57,7 +57,7 @@ class Dropdown extends Component {
         const { menu, weekday, meal, recipe, show } = this.state
         return (
             <div className="dropdown">
-                <button className="drpdwn-button" onClick={this.toggleShow} style={{ float: "left" }}>+</button>
+                <button className="drpdwn-button" onClick={this.toggleShow} style={{ float: "left" }}>Add to menu</button>
                 <div className="drpdwn-options" style={{ visibility: show }}>
                     <select className="drpdwn-menu" onChange={this.handleChange} defaultValue={"default"} name="menu" >
                         <option disabled value="default" hidden>Select Menu</option>
@@ -80,7 +80,7 @@ class Dropdown extends Component {
                         <option value="Dinner">Dinner</option>
                         <option value="Dessert">Dessert</option>
                     </select>
-                    <button onClick={() => this.handleAdd(menu, weekday, meal, recipe)} >Submit</button>
+                    <button onClick={() => this.handleAdd(menu, weekday, meal, recipe)} className="drpdwn-submit" >Submit</button>
                 </div>
             </div>
         );

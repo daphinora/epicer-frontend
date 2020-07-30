@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-import MenuTab from './MenuTab';
 import MenuCalendar from './MenuCalendar';
 
-// Big Ol' Great-Grandpa container! Immediate Children: MenuTab and MenuCalendar!
+// css
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../css/MenuCalendar.css';
+
+
+// Big Ol' Great-Grandpa container! Immediate Child: MenuCalendar!
 class MenuPage extends Component {
     state = {
         currentMenu: this.props.menus[0],
-        show: "hidden",
         date: "",
     }
 
@@ -28,48 +34,33 @@ class MenuPage extends Component {
         let date = event.target.valueAsDate.toString();
         let day = date[8] + date[9];
         let newDate = date.replace("GMT-0500 (Central Daylight Time)", "").replace("Sun ", "")
-            // .replace(` ${(new Date().getHours() - 1).toString() + ":00:00"}`, "")
             .replace(" 19:00:00", "")
             .replace(day, parseInt(day) + 1);
         let altDate = (newDate + `- ${newDate[0] + newDate[1] + newDate[2]} ${parseInt(day) + 7} 2020`).toString();
         this.setState({ date: altDate });
     }
 
-    renderTabs = () => {
-        return this.props.menus.map(m => <MenuTab key={m.id} menu={m} handleClick={this.setCurrentMenu} />)
-    }
-
-    setCurrentMenu = (menu) => {
-        this.setState({ currentMenu: menu })
-    }
-
-    toggleNewMenu = () => {
-        this.state.show === "hidden" ? this.setState({ show: "visible" }) : this.setState({ show: "hidden" })
-    }
-
-    renderCalendar = () => {
-        if (this.props.menus.length > 0) {
-            return <MenuCalendar menu={this.state.currentMenu} />
-        } else {
-            return <div>
-                You haven't created a menu yet!
-            </div>
-        }
-    }
-
-
     render() {
-        const { show } = this.state
         return (
-            <div className="menu">
-                {this.renderTabs()}
-                <button className="new-menu btn" onClick={() => this.toggleNewMenu()} >New Menu</button>
-                <form style={{ visibility: show }} onChange={this.handleChange} onSubmit={() => this.createNewMenu()} >
-                    <label>Select a week:</label>
-                    <input type="week" id="week" name="week" />
-                    <button>Create</button>
-                </form>
-                {this.renderCalendar()}
+            <div className="MenuPage">
+                <div className="new-menu" style={{ backgroundColor: "white" }}>
+                    <div style={{ marginLeft: "600px", fontSize: "80px", maxHeight: "50%", fontFamily: "Penna", marginTop: "-1%" }}>
+                        Weekly Menus
+                    </div>
+                    {/* <br /> */}
+                    <form style={{ fontSize: "17px", }} className="new-form" onChange={this.handleChange} onSubmit={() => this.createNewMenu()} >
+                        <label>Creating a new menu? Select a week:</label>
+                        <input type="week" id="week" name="week" />
+                        <Button type="submit" style={{ fontSize: "15px" }}>Create</Button>
+                    </form>
+                    <br />
+                </div>
+                <Tabs defaultActiveKey={this.props.menus.first} style={{ backgroundColor: "white" }}>
+                    {this.props.menus.map(m => <Tab key={m.id} style={{ color: "white" }} eventKey={m.id} title={m.week.replace(/2020/g, "")}><MenuCalendar key={m.id} menu={m} /></Tab>)}
+                </Tabs>
+                <br />
+                <br />
+                <br />
             </div>
         );
     }

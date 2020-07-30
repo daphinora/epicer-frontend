@@ -5,6 +5,7 @@ import RecipeCard from './RecipeCard';
 
 // css
 import '../css/RecipeCollection.css'
+import CardDeck from 'react-bootstrap/CardDeck';
 
 // for initial fetch
 class RecipeCollection extends Component {
@@ -40,17 +41,21 @@ class RecipeCollection extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Find your next recipe!</h2>
+            <div className="big-r">
+                <h2 className="col-header">Find your next recipe!</h2>
                 <form className="search-form" onSubmit={this.handleSearch} >
                     <label>
                         Search:
                         <input type="text" onChange={(e) => this.handleChange(e)} />
                     </label>
-                    <input type="submit" />
+                    <input type="submit" className="search-submit" />
                 </form>
-                <div className="rcollection" >
-                    {this.renderRecipes()}
+                <div >
+                    <div className="rcollection" >
+                        <CardDeck>
+                            {this.renderRecipes()}
+                        </CardDeck>
+                    </div>
                 </div>
             </div>
         );

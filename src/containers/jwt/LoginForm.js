@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
 function LoginForm(props) {
     const [username, setUsername] = useState("")
@@ -32,32 +34,34 @@ function LoginForm(props) {
             })
         setUsername("")
         setPassword("")
-    }
-
-    const formDivStyle = {
-        margin: "auto",
-        padding: "20px",
-        width: "80%"
+        props.history.push("/menu")
     }
 
     return (
-        <div>
-            <div style={formDivStyle}>
-                <h1>Log In</h1>
-                <form className="ui form" onSubmit={handleSubmit}>
-                    <div className="field">
-                        <label>Username</label>
-                        <input value={username} onChange={handleUsernameChange} type="text" placeholder="username" />
+        <Card bg="light" border="info" style={{ padding: '4vh' }}>
+            <Card.Body>
+                <Card.Title className="Sign-Up-Title" style={{ fontSize: "25px" }}>Log In</Card.Title>
+                <Card.Text className="Sign-Up-Title">
+                    <div>
+                        <form onSubmit={(e) => handleSubmit(e)} style={{ paddingBottom: "10px" }}>
+                            <label>Username:</label>
+                            <input value={username} onChange={handleUsernameChange} type="text" placeholder="username" />
+                            <br />
+                            <label style={{ paddingRight: "10px" }}>Password:</label>
+                            <input value={password} onChange={handlePasswordChange} type="password" placeholder="password" />
+                            <br />
+                            <br />
+                            <Button type="submit" className="Submit-Button">Submit</Button>
+                        </form>
                     </div>
-                    <div className="field">
-                        <label>Password</label>
-                        <input value={password} onChange={handlePasswordChange} type="password" placeholder="password" />
-                    </div>
-
-                    <button className="ui button" type="submit">Submit</button>
-                </form>
-            </div>
-        </div>
+                </Card.Text>
+                <br />
+                <div style={{ textAlign: "center" }}>
+                    Don't have an account?
+                    <Button variant="outline-primary" className="Other-Button" onClick={() => props.handleFormSwitch("signUp")}>Sign Up</Button>
+                </div>
+            </Card.Body>
+        </Card>
     )
 }
 

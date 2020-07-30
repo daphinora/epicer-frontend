@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import MenuDay from './MenuDay';
 
-// The successful child of MenuPage. Sibling to MenuTab. Parent of MenuDay!
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+// The successful child of MenuPage. Parent of MenuDay!
 
 class MenuCalendar extends Component {
     state = {
@@ -19,11 +23,15 @@ class MenuCalendar extends Component {
     getMenuDays = () => {
         return this.state.menuRecipes &&
             this.state.days.map(day =>
-                <div key={day} >
-                    {day}
-                    <MenuDay key={day} days={this.state.menuRecipes.filter(mr => mr.weekday === day)} removeRecipe={this.removeRecipe} />
-                    <br />
-                </div>
+                <Col className="column" key={day}>
+                    <div key={day} >
+                        <div className="weekday">
+                            {day}
+                        </div>
+                        <MenuDay key={day} days={this.state.menuRecipes.filter(mr => mr.weekday === day)} removeRecipe={this.removeRecipe} />
+                        <br />
+                    </div>
+                </Col>
             )
     }
 
@@ -36,14 +44,16 @@ class MenuCalendar extends Component {
             }
         })
 
-        this.setState({menuRecipes: this.state.menuRecipes.filter(m => m.id !== mr.id)})
+        this.setState({ menuRecipes: this.state.menuRecipes.filter(m => m.id !== mr.id) })
     }
 
     render() {
         return (
-            <div className="menu-calendar">
-                {this.getMenuDays()}
-            </div >
+            <Container className="Menu-Calendar">
+                <Row lg="7" >
+                    {this.getMenuDays()}
+                </Row>
+            </Container>
         );
     }
 

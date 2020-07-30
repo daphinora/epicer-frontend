@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 
 // css
 import './css/App.css';
@@ -12,8 +13,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import RecipeCollection from './recipe collection/RecipeCollection'
 import RecipePage from './recipe page/RecipePage';
 import MenuPage from './menu/MenuPage';
-import WelcomeBanner from './WelcomeBanner';
+import Home from './Home';
 
+const history = createBrowserHistory()
 class App extends Component {
   constructor() {
     super();
@@ -35,24 +37,27 @@ class App extends Component {
   }
 
   render() {
-    const {menus, user_id} = this.state
+    const { menus, user_id } = this.state
     return (
       <div>
         {/* NavBar! */}
-        <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="/">EPICER</Navbar.Brand>
-          <Nav className="mr-auto">
-            <Nav.Link href="/recipes">Recipes</Nav.Link>
-            <Nav.Link href="/menu">My Menu</Nav.Link>
-            <Nav.Link href="/">Logout</Nav.Link>
-            {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
-          </Nav>
-        </Navbar>
+        <div className="NavBar">
+          <Navbar variant="light">
+            <Navbar.Brand href="/" className="Nav-Brand" >EPICER</Navbar.Brand>
+            <Nav className="mr-auto">
+              <Nav.Link href="/menu">My Menu</Nav.Link>
+              <Nav.Link href="/recipes">Browse Recipes</Nav.Link>
+              <Nav.Link href="/">Logout</Nav.Link>
+              {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
+            </Nav>
+          </Navbar>
+        </div>
 
         {/* Routing! */}
-        <Router>
+        <Router history={history}>
           <Switch>
-            <Route exact path="/" component={WelcomeBanner} />
+            <Route exact path='/'> <Home history={history} /> </Route>
+            {/* <Route exact path="/" render={(props) => <WelcomeBanner {...props} history={history} />} /> */}
             <Route exact path="/recipes" render={() => <RecipeCollection menus={menus} />} />
             <Route path="/recipes/" render={(props) => <RecipePage {...props} menus={menus} />} />
             <Route path="/menu" render={(props) => <MenuPage {...props} user={user_id} menus={menus} />} />

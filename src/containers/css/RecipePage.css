@@ -1,11 +1,49 @@
 .header {
     /* float: left; */
-    display: flex;
-    justify-content: flex-start;
     padding: 10px;
-    width: 100%;
+    width: 70%;
+    font-family: 'Penna';
+    font-size: 60px;
+    font-weight: 900;
+    margin-left: 400px;
 }
 
-/* .recipe-page {
-    background-color: rgb(203, 251, 245);
-} */
+.recipe-page {
+    background: url(../assets/reipce\ page.jpg) no-repeat center center fixed;
+    background-size: 100%;
+    color: white;
+    height: 100%;
+}
+
+.header-and-image {
+    margin-left: 80px;
+}
+
+.rec-image {
+    border-radius: 50px;
+    margin-left: 270px;
+}
+
+.ingredients {
+    color: rgb(46, 46, 46);
+    width: 30%;
+    background-color: linen;
+    margin-left: 960px;
+    margin-top: -370px;
+    border-radius: 80px;
+
+}
+
+.instructions {
+    color: rgb(46, 46, 46);
+    width: 40%;
+    margin-left: 342px;
+    margin-top: -340px;
+}
+
+.rec-drp {
+    margin-left: 400px;
+    width: 100%;
+    margin-bottom: 24px;
+    margin-top: -10px;
+}

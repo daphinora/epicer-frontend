@@ -1,0 +1,57 @@
+.WelcomeBanner {
+    background: url("../assets/login backgroud.jpeg") no-repeat center center fixed;
+    min-height: 93vh;
+    min-width: 100vh;
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Sign-Up-Title {
+   text-align: center;
+}
+
+label {
+    padding-right: 6px;
+}
+
+.Submit-Button {
+    margin: 0;
+    width: 72%;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-color: #9bb48f;
+    padding: 8px 15px;
+    text-decoration: none;
+    font-size: 15px;
+    background-color: #90a885;
+}
+
+.Submit-Button:hover {
+    background-color:#809476 ;
+    border-color: rgb(0, 128, 38);
+}
+
+.Submit-Button:focus {
+    background-color:#5b6954 ;
+}
+
+.Other-Button {
+    margin: 0;
+    width: 75%;
+}
+
+.Banner {
+    font-family: 'Penna';
+    width: 70%;
+    margin-top: -6%;
+    text-align: center;
+    font-size: 90px;
+    font-weight: 700;
+}

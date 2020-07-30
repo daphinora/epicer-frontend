@@ -1,5 +1,6 @@
 import React from 'react';
 import MenuMeal from './MenuMeal';
+import ListGroup from 'react-bootstrap/esm/ListGroup';
 
 const MenuDay = (props) => {
 
@@ -10,8 +11,12 @@ const MenuDay = (props) => {
         if (props.days.length > 0) {
             return meals.map(meal =>
                 <div key={meal} className={meal}>
-                    {meal}:
-                    <MenuMeal key={meal} recipes={props.days.filter(r => r.meal === meal)} removeRecipe={props.removeRecipe}/>
+                    <div style={{ backgroundColor: "grey", paddingLeft: "20.5px" }}>
+                        {meal}:
+                </div>
+                    <ListGroup.Item style={{ backgroundColor: "white" }}>
+                        <MenuMeal key={meal} recipes={props.days.filter(r => r.meal === meal)} removeRecipe={props.removeRecipe} />
+                    </ListGroup.Item>
                 </div>
             )
         }
@@ -19,7 +24,9 @@ const MenuDay = (props) => {
 
     return (
         <div>
-            {props.days.length > 0 && renderRecipes()}
+            <ListGroup>
+                {props.days.length > 0 && renderRecipes()}
+            </ListGroup>
         </div>
     );
 }
