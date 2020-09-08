@@ -12,7 +12,7 @@ class Dropdown extends Component {
         menu: "",
         recipe: {},
         rec_id: "",
-        show: "hidden"
+        show: "hidden",
     }
 
     handleChange = (event) => {
@@ -25,14 +25,7 @@ class Dropdown extends Component {
         } else { this.setState({ show: "hidden" }) }
     }
 
-    successAlert = () => {
-        return <Alert variant='success'>
-            Recipe added!
-        </Alert>
-    }
-
     handleAdd = (menu, weekday, meal, recipe) => {
-        this.successAlert();
         fetch(`http://localhost:3000/recipes`, {
             method: 'POST',
             headers: {
@@ -43,7 +36,7 @@ class Dropdown extends Component {
                 recipe: {
                     ref_id: recipe.id,
                     title: recipe.title,
-                    cook_time: recipe.readyInMinutes
+                    cook_time: recipe.readyInMinutes,
                 },
                 menu_id: menu,
                 meal: meal,

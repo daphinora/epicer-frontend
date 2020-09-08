@@ -20,7 +20,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      user_id: 1,
+      user_id: 3,
       menus: [],
       status: true,
     }
@@ -42,7 +42,7 @@ class App extends Component {
       <div>
         {/* NavBar! */}
         <div className="NavBar">
-          <Navbar variant="light">
+          <Navbar bg="light">
             <Navbar.Brand href="/" className="Nav-Brand" >EPICER</Navbar.Brand>
             <Nav className="mr-auto">
               <Nav.Link href="/menu">My Menu</Nav.Link>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MenuCalendar from './MenuCalendar';
+import {Helmet} from "react-helmet"; 
 
 // css
 import Tabs from 'react-bootstrap/Tabs';
@@ -32,7 +33,6 @@ class MenuPage extends Component {
 
     handleChange = (event) => {
         let date = event.target.valueAsDate.toString();
-        console.log(date)
         let day = date[8] + date[9];
         let newDate = date.replace("GMT-0500 (Central Daylight Time)", "").replace("Sun ", "")
             .replace(" 19:00:00", "")
@@ -41,9 +41,38 @@ class MenuPage extends Component {
         this.setState({ date: altDate });
     }
 
+    // cheap way of making sure the entire picture renders whether items are on the menu or not
+    menuCheck = () => {
+        if (!this.state.currentMenu) {
+            return <div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </div>
+        }
+    }
+
     render() {
         return (
             <div className="MenuPage">
+                <Helmet>
+                    <title>Epicer | Weekly Menus</title>
+                </Helmet>
                 <div className="new-menu" style={{ backgroundColor: "white" }}>
                     <div style={{ marginLeft: "600px", fontSize: "80px", maxHeight: "50%", fontFamily: "Penna", marginTop: "-1%" }}>
                         Weekly Menus
@@ -61,6 +90,7 @@ class MenuPage extends Component {
                 <br />
                 <br />
                 <br />
+                {this.menuCheck()}
             </div>
         );
     }

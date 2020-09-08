@@ -10,7 +10,6 @@
     size: 10%;
     width: 100%;
     padding: 2px;
-    /* float: right; */
 }
 
 .Delete-Btn:hover {
@@ -57,4 +56,5 @@
 .weekday {
     font-size: 20px;
     background-color: dodgerblue;
+    text-align: center;
 }

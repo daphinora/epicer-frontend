@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
-import { useHistory } from 'react-router-dom'
+import React, { useState } from 'react';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+// import { useHistory } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 function SignUpForm(props) {
     const [username, setUsername] = useState("")
@@ -40,31 +41,36 @@ function SignUpForm(props) {
     }
 
     return (
-        <Card bg="light" border="light" style={{ padding: '4vh' }}>
-            <Card.Body>
-                <Card.Title className="Sign-Up-Title" style={{ fontSize: "25px" }}>Sign Up</Card.Title>
-                <Card.Text className="Sign-Up-Title">
-                    <div>
-                        <form onSubmit={(e) => handleSubmit(e)} style={{ paddingBottom: "10px" }}>
-                            <label>Username:</label>
-                            <input value={username} onChange={handleUsernameChange} type="text" placeholder="username" />
-                            <br />
-                            <label style={{ paddingRight: "10px" }}>Password:</label>
-                            <input value={password} onChange={handlePasswordChange} type="password" placeholder="password" />
-                            <br />
-                            <br />
-                            <Button type="submit" className="Submit-Button">Submit</Button>
-                        </form>
-                    </div>
-                </Card.Text>
-                {/* <br /> */}
-                <br />
-                <div style={{ textAlign: "center" }}>
-                    Already have an account?
+        <div>
+            <Helmet>
+                <title>Epicer | Sign In</title>
+            </Helmet>
+            <Card bg="light" border="light" style={{ padding: '4vh', marginLeft: "-30px" }}>
+                <Card.Body>
+                    <Card.Title className="Sign-Up-Title" style={{ fontSize: "25px" }}>Sign Up</Card.Title>
+                    <Card.Text className="Sign-Up-Title">
+                        <div>
+                            <form onSubmit={(e) => handleSubmit(e)} style={{ paddingBottom: "10px" }}>
+                                <label>Username:</label>
+                                <input value={username} onChange={handleUsernameChange} type="text" placeholder="username" />
+                                <br />
+                                <label style={{ paddingRight: "10px" }}>Password:</label>
+                                <input value={password} onChange={handlePasswordChange} type="password" placeholder="password" />
+                                <br />
+                                <br />
+                                <Button type="submit" className="Submit-Button">Submit</Button>
+                            </form>
+                        </div>
+                    </Card.Text>
+                    {/* <br /> */}
+                    <br />
+                    <div style={{ textAlign: "center" }}>
+                        Already have an account?
                     <Button variant="outline-primary" className="Other-Button" onClick={() => props.handleFormSwitch("login")}>Log In</Button>
-                </div>
-            </Card.Body>
-        </Card>
+                    </div>
+                </Card.Body>
+            </Card>
+        </div>
     )
 }
 

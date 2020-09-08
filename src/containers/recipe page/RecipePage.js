@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Helmet} from 'react-helmet';
 
 // css
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -33,6 +34,9 @@ class RecipePage extends Component {
 
         return (
             <div className="recipe-page">
+                <Helmet>
+                    <title>{"Epicer | " + title}</title>
+                </Helmet>
                 <div className="header-and-image">
                     <div className="header">
                         {/* title */}

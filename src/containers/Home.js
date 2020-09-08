@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import './css/Home.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card'
+import Alert from 'react-bootstrap/Alert'
 
 // components
 import SignUpForm from './jwt/SignUpForm';
@@ -44,15 +45,21 @@ function Home(props) {
         return <SignUpForm handleFormSwitch={handleFormSwitch} handleLogin={handleLogin} history={props.history} />
     }
   }
+
   return (
-    <div className="WelcomeBanner">
-      <Card className="Banner" style={{ width: "40%" }} bg="light">
-        <Card.Header>Welcome to Epicer!</Card.Header>
-      </Card>
-      <br />
-      <br />
-      <br />
-      {renderForm()}
+    <div style={{backgroundColor: "lightblue"}}>
+      {/* <Alert variant="info" style={{backgroundColor: "lightblue", textAlign: "center"}}>
+        User authentication currently disabled. Please press the submit button.
+      </Alert> */}
+      <div className="WelcomeBanner">
+        <Card className="Banner" style={{ width: "40%" }} bg="light">
+          <Card.Header>Welcome to Epicer!</Card.Header>
+        </Card>
+        <br />
+        <br />
+        <br />
+        {renderForm()}
+      </div>
     </div>
   );
 }
