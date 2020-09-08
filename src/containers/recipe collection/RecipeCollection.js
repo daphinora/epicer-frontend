@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Helmet} from 'react-helmet';
 
 // components
 import RecipeCard from './RecipeCard';
@@ -7,7 +8,6 @@ import RecipeCard from './RecipeCard';
 import '../css/RecipeCollection.css'
 import CardDeck from 'react-bootstrap/CardDeck';
 
-// for initial fetch
 class RecipeCollection extends Component {
     state = {
         recipes: [],
@@ -42,6 +42,9 @@ class RecipeCollection extends Component {
     render() {
         return (
             <div className="big-r">
+                <Helmet>
+                    <title>Epicer | Recipes</title>
+                </Helmet>
                 <h2 className="col-header">Find your next recipe!</h2>
                 <form className="search-form" onSubmit={this.handleSearch} >
                     <label>
