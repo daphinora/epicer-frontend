@@ -45,16 +45,16 @@ function SignUpForm(props) {
             <Helmet>
                 <title>Epicer | Sign In</title>
             </Helmet>
-            <Card bg="light" border="light" style={{ padding: '4vh', marginLeft: "-30px" }}>
+            <Card bg="light" border="light" className="Card">
                 <Card.Body>
-                    <Card.Title className="Sign-Up-Title" style={{ fontSize: "25px" }}>Sign Up</Card.Title>
-                    <Card.Text className="Sign-Up-Title">
+                    <Card.Title className="Sign-Up-Title">Sign Up</Card.Title>
+                    <Card.Text className="Sign-Up-Text">
                         <div>
-                            <form onSubmit={(e) => handleSubmit(e)} style={{ paddingBottom: "10px" }}>
+                            <form className="Submit-Form" onSubmit={(e) => handleSubmit(e)}>
                                 <label>Username:</label>
                                 <input value={username} onChange={handleUsernameChange} type="text" placeholder="username" />
                                 <br />
-                                <label style={{ paddingRight: "10px" }}>Password:</label>
+                                <label className="Submit-Label">Password:</label>
                                 <input value={password} onChange={handlePasswordChange} type="password" placeholder="password" />
                                 <br />
                                 <br />
@@ -62,11 +62,10 @@ function SignUpForm(props) {
                             </form>
                         </div>
                     </Card.Text>
-                    {/* <br /> */}
                     <br />
                     <div style={{ textAlign: "center" }}>
                         Already have an account?
-                    <Button variant="outline-primary" className="Other-Button" onClick={() => props.handleFormSwitch("login")}>Log In</Button>
+                    <Button variant="outline-primary" className="Switch-Button" onClick={() => props.handleFormSwitch("login")}>Log In</Button>
                     </div>
                 </Card.Body>
             </Card>

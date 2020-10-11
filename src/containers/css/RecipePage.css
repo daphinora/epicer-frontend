@@ -39,3 +39,8 @@
     height: 100vh;
     visibility: hidden;
 }
+
+.Card-Title {
+    color: black;
+    text-align: center;
+}

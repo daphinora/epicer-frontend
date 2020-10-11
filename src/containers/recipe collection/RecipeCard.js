@@ -8,7 +8,7 @@ class RecipeCard extends Component {
         let { title, id, readyInMinutes } = this.props.recipe
         return (
             <div>
-                <Card style={{ width: '18rem' }} className="recipe-card">
+                <Card className="recipe-card">
                     <Card.Img variant="top" src={this.props.image} alt={this.props.image} className="col-img" />
                     <Card.Body>
                         <Card.Title>{title}</Card.Title>

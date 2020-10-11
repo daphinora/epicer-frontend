@@ -1,6 +1,7 @@
 .recipe-card {
     border-radius: 10px;
     padding: 50px;
+    width: 18rem;
 }
 
 .col-img {

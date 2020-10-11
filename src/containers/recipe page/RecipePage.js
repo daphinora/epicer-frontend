@@ -39,7 +39,7 @@ class RecipePage extends Component {
                 </Helmet>
                 <div className="header-and-image">
                     <div className="header">
-                        {/* title */}
+                    {/* title */}
                         {title} | Ready In: {readyInMinutes} Minutes
                     </div>
 
@@ -55,15 +55,15 @@ class RecipePage extends Component {
                             </Card.Body>
                         </Card>
 
-                        {/* image */}
+                    {/* image */}
                         <Card className="rec-image">
                             <Card.Img src={image} className="rec-image" />
                         </Card>
 
-                        {/* ingredients */}
+                    {/* ingredients */}
                         <Card className="card">
                             <Card.Body>
-                                <Card.Title style={{ color: "black", textAlign: "center" }}>
+                                <Card.Title className="Card-Title">
                                     Ingredients:
                                 </Card.Title>
                                 <Card.Text>
@@ -74,10 +74,10 @@ class RecipePage extends Component {
                             </Card.Body>
                         </Card>
 
-                        {/* instructions */}
+                    {/* instructions */}
                         <Card className="card">
                             <Card.Body>
-                                <Card.Title style={{ color: "black", textAlign: "center" }}>
+                                <Card.Title className="Card-Title">
                                     Instructions:
                                 </Card.Title>
                                 <Card.Text>

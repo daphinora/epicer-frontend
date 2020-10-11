@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // css
 import './css/Dropdown.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Alert from 'react-bootstrap/Alert';
+import swal from 'sweetalert';
 
 class Dropdown extends Component {
     state = {
@@ -44,6 +44,16 @@ class Dropdown extends Component {
             })
         })
             .catch(err => { console.log(err) });
+        this.successAlert()
+    }
+
+    successAlert = () => {
+        let { weekday, meal, menu } = this.state
+        fetch(`http://localhost:3000/menus/${menu}`)
+            .then(r => r.json())
+            // .then(r => console.log(r))
+            .then(r => swal("Added!", `Recipe added to ${r.week + " " + weekday + " " + meal}`, "success"))
+
     }
 
     render() {
@@ -73,7 +83,7 @@ class Dropdown extends Component {
                         <option value="Dinner">Dinner</option>
                         <option value="Dessert">Dessert</option>
                     </select>
-                    <button onClick={() => this.handleAdd(menu, weekday, meal, recipe)} className="drpdwn-submit" >Submit</button>
+                    <button onClick={() => this.handleAdd(menu, weekday, meal, recipe)} className="drpdwn-submit">Submit</button>
                 </div>
             </div>
         );

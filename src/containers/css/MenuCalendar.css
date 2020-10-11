@@ -18,6 +18,11 @@
     color: #7a1d10;
 }
 
+.Meal-Name {
+    background-color: rgb(149, 163, 180);
+    padding-left: 20.5px;
+}
+
 .new-btn {
     margin: 2px;
     font-size: 25px;
@@ -30,19 +35,24 @@
     background-color: dodgerblue;
 }
 
-.new-form {
+.New-Form {
+    font-size: 17px;
     position: absolute;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);   
 }
 
+.New-Menu {
+    background-color: white;
+}
+
 .Menu-Calendar {
-    min-width: 100%;
+    max-width: 100%;
     color: white;
 }
 
-.MenuPage {
+.Menu-Page {
     background-image: url(../assets/cutting\ board.jpeg);
     background-size: cover;
     size: 200%
@@ -57,4 +67,12 @@
     font-size: 20px;
     background-color: dodgerblue;
     text-align: center;
+}
+
+.Weekly-Menus {
+    margin-left: 600px;
+    font-size: 80px;
+    max-height: 50%;
+    font-family: "Penna";
+    margin-top: -1%;
 }

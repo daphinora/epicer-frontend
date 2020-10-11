@@ -43,16 +43,16 @@ function LoginForm(props) {
             <Helmet>
                 <title>Epicer | Log In</title>
             </Helmet>
-            <Card bg="light" border="light" style={{ padding: '4vh', marginLeft: "-30px" }}>
+            <Card bg="light" border="light" className="Card">
                 <Card.Body>
-                    <Card.Title className="Sign-Up-Title" style={{ fontSize: "25px" }}>Log In</Card.Title>
-                    <Card.Text className="Sign-Up-Title">
+                    <Card.Title className="Sign-Up-Title">Log In</Card.Title>
+                    <Card.Text className="Sign-Up-Text">
                         <div>
-                            <form onSubmit={(e) => handleSubmit(e)} style={{ paddingBottom: "10px" }}>
+                            <form onSubmit={(e) => handleSubmit(e)} className="Submit-Form">
                                 <label>Username:</label>
                                 <input value={username} onChange={handleUsernameChange} type="text" placeholder="username" />
                                 <br />
-                                <label style={{ paddingRight: "10px" }}>Password:</label>
+                                <label className="Submit-Label">Password:</label>
                                 <input value={password} onChange={handlePasswordChange} type="password" placeholder="password" />
                                 <br />
                                 <br />
@@ -63,7 +63,7 @@ function LoginForm(props) {
                     <br />
                     <div style={{ textAlign: "center" }}>
                         Don't have an account?
-                    <Button variant="outline-primary" className="Other-Button" onClick={() => props.handleFormSwitch("signUp")}>Sign Up</Button>
+                    <Button variant="outline-primary" className="Switch-Button" onClick={() => props.handleFormSwitch("signUp")}>Sign Up</Button>
                     </div>
                 </Card.Body>
             </Card>

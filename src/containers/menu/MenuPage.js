@@ -63,21 +63,27 @@ class MenuPage extends Component {
                 <br/>
                 <br/>
                 <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
             </div>
         }
     }
 
     render() {
         return (
-            <div className="MenuPage">
+            <div className="Menu-Page">
                 <Helmet>
                     <title>Epicer | Weekly Menus</title>
                 </Helmet>
-                <div className="new-menu" style={{ backgroundColor: "white" }}>
-                    <div style={{ marginLeft: "600px", fontSize: "80px", maxHeight: "50%", fontFamily: "Penna", marginTop: "-1%" }}>
+                <div className="New-Menu">
+                    <div className="Weekly-Menus">
                         Weekly Menus
                     </div>
-                    <form style={{ fontSize: "17px", }} className="new-form" onChange={this.handleChange} onSubmit={() => this.createNewMenu()} >
+                    <form className="New-Form" onChange={this.handleChange} onSubmit={() => this.createNewMenu()} >
                         <label>Creating a new menu? Select a week:</label>
                         <input type="week" id="week" name="week" />
                         <Button type="submit" style={{ fontSize: "15px" }}>Create</Button>
@@ -87,9 +93,6 @@ class MenuPage extends Component {
                 <Tabs defaultActiveKey={this.props.menus.first} style={{ backgroundColor: "white" }}>
                     {this.props.menus.map(m => <Tab key={m.id} style={{ color: "white" }} eventKey={m.id} title={m.week.replace(/2020/g, "")}><MenuCalendar key={m.id} menu={m} /></Tab>)}
                 </Tabs>
-                <br />
-                <br />
-                <br />
                 {this.menuCheck()}
             </div>
         );

@@ -47,12 +47,12 @@ function Home(props) {
   }
 
   return (
-    <div style={{backgroundColor: "lightblue"}}>
+    <div>
       {/* <Alert variant="info" style={{backgroundColor: "lightblue", textAlign: "center"}}>
         User authentication currently disabled. Please press the submit button.
       </Alert> */}
       <div className="WelcomeBanner">
-        <Card className="Banner" style={{ width: "40%" }} bg="light">
+        <Card className="Banner" bg="light">
           <Card.Header>Welcome to Epicer!</Card.Header>
         </Card>
         <br />

@@ -8,14 +8,14 @@ const MenuDay = (props) => {
 
     const renderRecipes = () => {
         let meals = ["Breakfast", "Lunch", "Dinner", "Dessert"]
-        if (props.days.length > 0) {
+        if (props.meals.length !== 0) {
             return meals.map(meal =>
                 <div key={meal}>
-                    <div style={{ backgroundColor: "grey", paddingLeft: "20.5px" }}>
+                    <div className="Meal-Name">
                         {meal}:
                     </div>
                     <ListGroup.Item style={{ backgroundColor: "white" }}>
-                        <MenuMeal key={meal} recipes={props.days.filter(r => r.meal === meal)} removeRecipe={props.removeRecipe} meal={meal} />
+                        <MenuMeal key={meal} recipes={props.meals.filter(r => r.meal === meal)} removeRecipe={props.removeRecipe} meal={meal} />
                     </ListGroup.Item>
                 </div>
             )
@@ -25,7 +25,7 @@ const MenuDay = (props) => {
     return (
         <div>
             <ListGroup>
-                {props.days.length > 0 && renderRecipes()}
+                {props.meals.length > 0 && renderRecipes()}
             </ListGroup>
         </div>
     );
